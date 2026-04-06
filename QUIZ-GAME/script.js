@@ -107,11 +107,12 @@ function showQuestion() {
         const button = document.createElement("button");
         button.textContent = answer.text;
         button.classList.add("answer-btn");
-        //what is dataset? dataset is a property of the HTMLElement interface that provides access to all the custom data attributes (data-*) set on the element. It allows you to store and retrieve custom data associated with an HTML element without using additional properties or classes. In this case, we are using dataset to store whether the answer is correct or not, which can be accessed later when the user selects an answer.
+        //what is dataset? dataset is a property of the HTMLElement interface that provides access to all the custom data attributes (data-*) set on the element.
+        //It allows you to store and retrieve custom data associated with an HTML element without using additional properties or classes.
+        //In this case, we are using dataset to store whether the answer is correct or not, which can be accessed later when the user selects an answer.
         button.dataset.correct = answer.correct;
         button.addEventListener("click", selectAnswer);
         answersContainer.appendChild(button);
-        
     });
 }
 
@@ -121,8 +122,8 @@ function selectAnswer(event) {
     const selectedButton = event.target;
     const isCorrect = selectedButton.dataset.correct === "true";
     //What is Array.from? Array.from() is a static method that creates a new, shallow-copied Array instance from an array-like or iterable object. 
-    // In this case, we are using Array.from() to convert the HTMLCollection of answer buttons (which is returned by answersContainer.children) into a regular array, allowing us to use array methods like forEach to iterate over the buttons and apply the appropriate classes based on whether they are correct or incorrect.
-    Array.from(answersContainer.children).forEach(button=>{
+    //In this case, we are using Array.from() to convert the HTMLCollection of answer buttons (which is returned by answersContainer.children) into a regular array, allowing us to use array methods like forEach to iterate over the buttons and apply the appropriate classes based on whether they are correct or incorrect.
+    Array.from(answersContainer.children).forEach(button => {
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
         }else if(button === selectedButton){
@@ -149,23 +150,22 @@ function showResults() {
    const percentage = (score / quizQuestions.length) * 100;
     if(percentage === 100){
      resultMessage.textContent = "Excellent work!";
-    }else if(percentage <= 99 && percentage >= 80){
+    }else if(percentage <= 80 && percentage >= 60){
      resultMessage.textContent = "Good job!";
-    }else if(percentage <= 79 && percentage >= 60){ 
+    }else if(percentage < 60 && percentage >= 40){ 
      resultMessage.textContent = "Better luck next time!";
     }
-    else if(percentage <= 59 && percentage >= 40){
+    else if(percentage < 40 && percentage >= 20){
      resultMessage.textContent = "Keep practicing!";
     }else{
      resultMessage.textContent = "Don't give up!";
     }
-    resultMessage.style.fontSize = "1.5em";
+    resultMessage.style.fontSize = "1.5rem";
     resultMessage.style.color ="#e86a33";
 }
 
 function restartQuiz() {
     // console.log("quiz re-started");
     resultScreen.classList.remove("active");
-    
     startQuiz();
 }

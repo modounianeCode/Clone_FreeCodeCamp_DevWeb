@@ -64,7 +64,10 @@ body{
     line-height: 1.4;
     
 }
-
+div .result-info p{
+    color: gray;
+    font-size: 1.2rem;
+}
 .quiz-info{
     display: flex;
     justify-content: space-between;
@@ -92,7 +95,7 @@ body{
     border-color: #dac0ae;
 }
 .answer-btn-correct{
-    background-color: #011f0d;
+    background-color:red;
     border-color: #a3f0c4;
     color: #0aac30;
 }
@@ -124,15 +127,13 @@ body{
 }
 .result-info{
     background-color: #f8f0e5;
-
     border-radius: 10px;
-    padding: 20px;
+    padding: 6px;
     margin-bottom: 30px;
 
 }
 .result-info p{
     font-size: 1.2rem;
-    font-weight: 600;
     color: var(--font-color);
 }
 button{
