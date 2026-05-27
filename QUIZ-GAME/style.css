@@ -11,9 +11,9 @@
 body{
     /* background: var(--bg-color-body); */
     background-color: var(--bg-color-body);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     min-height: 100vh;
     padding: 1rem;
     font-family: sans-serif;
@@ -25,11 +25,11 @@ body{
     width: 100%;
     max-width: 600px;
     overflow: hidden;
-    position: relative;
+    position:relative;
 }
 /* Screens*/
 .screen{
-    display: none;
+    display:none;
     padding: 2rem;/*32px*/
     text-align: center;
 }
@@ -76,7 +76,7 @@ div .result-info p{
 }
 .answers-container{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     gap: 10px;
     margin-bottom: 25px;
 }
@@ -94,15 +94,13 @@ div .result-info p{
     background-color: #eadbc8;
     border-color: #dac0ae;
 }
-.answer-btn-correct{
-    background-color:red;
-    border-color: #a3f0c4;
-    color: #0aac30;
+.answer-btn.correct{
+    background-color:green;
+    border-color:#a3f0c4;
 }
-.answer-btn-incorrect{
-    background-color: #e6fff0;
+.answer-btn.incorrect{
+    background-color: red;
     border-color: #a3f0c4;
-    color: #dc3545;
 }
 .progress-bar{
     height: 10px;
@@ -112,7 +110,7 @@ div .result-info p{
     margin-bottom: 20px;
 }
 .progress{
-    height: 100%;
+    height:100%;
     background-color: #e86a33;
     width: 0%;
     transition: width 0.3s ease;
@@ -127,20 +125,21 @@ div .result-info p{
 }
 .result-info{
     background-color: #f8f0e5;
-    border-radius: 10px;
-    padding: 6px;
+    border-radius: 60px;
+    padding:2rem;
     margin-bottom: 30px;
-
+    font-size: larger;
+    font-weight: 900;
 }
 .result-info p{
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: var(--font-color);
 }
 button{
     background-color: var(--font-color);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 100px;
     padding: 15px 30px;
     font-size: 1.1rem;
     cursor: pointer;
