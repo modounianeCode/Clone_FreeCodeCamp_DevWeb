@@ -1,3 +1,4 @@
+
 // DOM Elements
 const startScreen = document.getElementById("start-screen");
 const quizScreen = document.getElementById("quiz-screen");
@@ -80,14 +81,15 @@ restartButton.addEventListener("click", restartQuiz);
 
 // Functions
 function startQuiz() {
-    // console.log(answersContainer.children);
+   //console.log(answersContainer.children);
     //reset vars
     currentQuestionIndex = 0;
     score = 0;
     scoreSpan.textContent=0;
     //classlist? The classList property of an element returns the class names of the element as a DOMTokenList object. 
     // It provides methods to add, remove, toggle, and check for the presence of specific classes on the element. 
-    // In this case, we are using classList to remove the "active" class from the start screen and add it to the quiz screen, effectively showing the quiz screen and hiding the start screen when the quiz starts.
+    // In this case, we are using classList to remove the "active" class from the start screen and add it to the quiz screen,
+    //  effectively showing the quiz screen and hiding the start screen when the quiz starts.
     startScreen.classList.remove("active");
     quizScreen.classList.add("active");
     showQuestion();
@@ -107,9 +109,9 @@ function showQuestion() {
         const button = document.createElement("button");
         button.textContent = answer.text;
         button.classList.add("answer-btn");
-        //what is dataset? dataset is a property of the HTMLElement interface that provides access to all the custom data attributes (data-*) set on the element.
-        //It allows you to store and retrieve custom data associated with an HTML element without using additional properties or classes.
-        //In this case, we are using dataset to store whether the answer is correct or not, which can be accessed later when the user selects an answer.
+        //dataset, est une propriété qui permet d'associer des données personnalisées à un élément HTML. 
+        //Dans ce cas, nous utilisons dataset pour stocker une valeur indiquant si la réponse est correcte ou non. 
+        //Cela nous permet de facilement vérifier si la réponse sélectionnée par l'utilisateur est correcte lors de l'événement de clic.
         button.dataset.correct = answer.correct;
         button.addEventListener("click", selectAnswer);
         answersContainer.appendChild(button);
@@ -121,14 +123,14 @@ function selectAnswer(event) {
     answersDisabled = true;
     const selectedButton = event.target;
     const isCorrect = selectedButton.dataset.correct === "true";
-    //What is Array.from? Array.from() is a static method that creates a new, shallow-copied Array instance from an array-like or iterable object. 
-    //In this case, we are using Array.from() to convert the HTMLCollection of answer buttons (which is returned by answersContainer.children) into a regular array, allowing us to use array methods like forEach to iterate over the buttons and apply the appropriate classes based on whether they are correct or incorrect.
+    //Array.from() est une méthode statique qui crée una nouvelle instance de Array à partir d'un objet iterable ou array-like.
     Array.from(answersContainer.children).forEach(button => {
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
-        }else if(button === selectedButton){
-            button.classList.add("incorrect");
-        }
+         }
+        //  else if(button === selectedButton){
+        //     button.classList.add("incorrect");
+        // }
     });
     if(isCorrect){
         score++;
@@ -143,22 +145,25 @@ function selectAnswer(event) {
         }
     },100);
 }
+// setInterval(() => {
+//     console.log(document.children);
+// }, 2000);
 function showResults() {    
     quizScreen.classList.remove("active");
     resultScreen.classList.add("active");
     finalScoreSpan.textContent = score;
-   const percentage = (score / quizQuestions.length) * 100;
+   const percentage = Math.floor((score / quizQuestions.length) * 100);
     if(percentage === 100){
-     resultMessage.textContent = "Excellent work!";
+     resultMessage.textContent = "Excellent work! "+percentage+"%";
     }else if(percentage <= 80 && percentage >= 60){
-     resultMessage.textContent = "Good job!";
+     resultMessage.textContent = "Good job! "+percentage+"%";
     }else if(percentage < 60 && percentage >= 40){ 
-     resultMessage.textContent = "Better luck next time!";
+     resultMessage.textContent = "Better luck next time! "+percentage+"%";
     }
     else if(percentage < 40 && percentage >= 20){
-     resultMessage.textContent = "Keep practicing!";
+     resultMessage.textContent = "Keep practicing! "+percentage+"%";
     }else{
-     resultMessage.textContent = "Don't give up!";
+     resultMessage.textContent = "Don't give up! "+percentage+"%";
     }
     resultMessage.style.fontSize = "1.5rem";
     resultMessage.style.color ="#e86a33";
