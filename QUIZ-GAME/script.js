@@ -121,16 +121,16 @@ function showQuestion() {
 function selectAnswer(event) {
     if(answersDisabled) return;
     answersDisabled = true;
-    const selectedButton = event.target;
+    const selectedButton = event.target
     const isCorrect = selectedButton.dataset.correct === "true";
     //Array.from() est une méthode statique qui crée una nouvelle instance de Array à partir d'un objet iterable ou array-like.
     Array.from(answersContainer.children).forEach(button => {
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
          }
-        //  else if(button === selectedButton){
-        //     button.classList.add("incorrect");
-        // }
+         else if(button === selectedButton){
+            button.classList.add("incorrect");
+        }
     });
     if(isCorrect){
         score++;
@@ -143,7 +143,7 @@ function selectAnswer(event) {
         }else{
             showResults();
         }
-    },100);
+    },500);
 }
 // setInterval(() => {
 //     console.log(document.children);
