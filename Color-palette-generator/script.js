@@ -2,8 +2,6 @@ const generateBtn = document.getElementById('generate-btn');
 const paletteContainer = document.querySelector('.palette-container');
 // const copyBtn = document.querySelector('.copy-btn');
 
-
-
 generateBtn.addEventListener('click',generatePalette);
 
 
@@ -22,17 +20,16 @@ paletteContainer.addEventListener('click',function(e){
         .catch((err) => console.error(err));
     }
 }
-
 );
 function showCopySuccess(element){
    element.classList.remove("far","fa-copy");
    element.classList.add("fas","fa-check");
    element.style.color="#48BB78";
 
-    setTimeout(() => {
-        element.classList.remove("fas","fa-check");
-        element.classList.add("far","fa-copy");
-        element.style.color=""; // Reset to default color
+   setTimeout(() => {
+    element.classList.remove("fas","fa-check");
+    element.classList.add("far","fa-copy");
+    element.style.color=""; // Reset to default color
     }, 1500);
 
 }
@@ -57,10 +54,9 @@ function updatePaletteDisplay(colors){
     colorBoxes.forEach((box,index)=>{
         const color=colors[index];
         const colorDiv=box.querySelector('.color');
-        
         const hexValue=box.querySelector('.hex-value');
         colorDiv.style.backgroundColor=color;
         hexValue.textContent=color;
     });
 }
-generatePalette();
+// generatePalette();
